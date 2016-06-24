@@ -65,7 +65,9 @@ categories: lj#{jekyll_tag}
   end
 end
 
+Dir.mkdir('lj') unless Dir.exist?('lj')
+
 import_tool = LJparse.new('http://vgulaev.livejournal.com')
 import_tool.import_lj
 
-puts('hello')
+puts('finish!!!')
