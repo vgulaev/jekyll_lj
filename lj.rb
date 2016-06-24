@@ -4,6 +4,7 @@ require 'nokogiri'
 require 'date'
 require 'pry'
 
+# class LJparse
 class LJparse
   attr_accessor :root, :k
 
@@ -24,7 +25,7 @@ class LJparse
       ljtags = entry_text.xpath("//div[@class='ljtags']")
       tags = entry_text.xpath("//div[@class='ljtags']/a")
       ljtags.first.remove if ljtags.count > 0
-      jekyll_tag = tags.map { |el| ", #{el.text}"}.join
+      jekyll_tag = tags.map { |el| ", #{el.text}" }.join
       f.write("---
 layout: post
 title:  \"#{subject.text}\"
@@ -56,9 +57,7 @@ categories: lj#{jekyll_tag}
     source = Net::HTTP.get(uri)
     html_doc = Nokogiri::HTML(source)
     years = html_doc.xpath("//ul[@class='year']/li")
-
-    return "Years cant find " if 0 == years.count
-    
+    return 'Years cant find' if 0 == years.count
     years.each do |year|
       iter_years(year.text)
     end
