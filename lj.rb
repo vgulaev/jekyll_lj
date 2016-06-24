@@ -36,7 +36,7 @@ categories: lj#{jekyll_tag}
 )
     end
     @k += 1
-    puts(k)
+    puts("Import post: #{k}")
   end
 
   def iter_years(year)
@@ -48,7 +48,6 @@ categories: lj#{jekyll_tag}
       subjects.each do |subject|
         parse_to_jekyll(subject)
       end
-      #break
     end
   end
 
